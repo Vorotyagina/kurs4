@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable react/no-access-state-in-setstate */
 import React from 'react'
@@ -11,13 +12,13 @@ export default class extends React.Component {
 
   upCount = () => {
     if (this.state.curCount < this.props.maxValue) {
-      this.setState({ curCount: Number(this.state.curCount) + 1 })
+      this.setState((prevState) => ({ curCount: Number(this.state.curCount) + 1 }))
     }
   }
 
   downCount = () => {
     if (this.state.curCount > this.props.minValue) {
-      this.setState({ curCount: Number(this.state.curCount) - 1 })
+      this.setState((prevState) => ({ curCount: Number(this.state.curCount) - 1 }))
     }  
   }
 
