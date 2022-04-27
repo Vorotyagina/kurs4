@@ -10,9 +10,6 @@ export default class ReacTimer extends React.Component {
       count: 0,
       isCounting: false,
     }
-
-    this.handleStart = this.handleStart.bind(this)
-    this.timerStart = this.timerStart.bind(this)
   }
 
   componentDidMount() {}

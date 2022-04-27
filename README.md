@@ -137,5 +137,3 @@ ReactDOM.render(
 - Разрешите конфликты между линтерами (*при необходимости*).
 - Проверьте зависимости .eslintrc.json, .prettierrc.json, package.json.
 - Запушьте все изменения на GitHub.
-
-Настройте окружение в Visual Code.
