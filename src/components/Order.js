@@ -83,14 +83,19 @@ export default class Order extends React.Component {
   decrementQuantityWithPrice = (index) => {
     let totalQuantity = this.state.quantity
     let totalAmount = this.state.amount
-
-    const newData = this.state.details.map((object) => {if (object.id === index && object.quantity > 0) { 
-      
-      return ( {
-        id: object.id,
-        productName: object.productName, 
-        price: object.price,
-        quantity: object.quantity - 1}) }
+    let change = 0
+    
+    const newData = this.state.details.map((object) => {
+    
+      if (object.id === index && object.quantity > 0) { 
+       change = 1
+        return ( {
+          id: object.id,
+          productName: object.productName, 
+          price: object.price,
+          quantity: object.quantity - 1})
+ 
+       }
         else { 
           return ( {
             id: object.id,
@@ -98,9 +103,10 @@ export default class Order extends React.Component {
             price: object.price,
             quantity: object.quantity})
           }})
-
+        
     newData.forEach((element) => {
-      if (element.id === index && totalQuantity > 0 && element.quantity > 0) {
+      
+      if (element.id === index && totalQuantity > 0 && (change === 1 ? element.quantity > -1 : element.quantity >0 )) {
         totalQuantity -= 1
         totalAmount -= element.price}
       })
@@ -109,7 +115,7 @@ export default class Order extends React.Component {
       amount: totalAmount, 
       quantity: totalQuantity,
       details: newData}))
-
+    
   }  
 
   render() {
