@@ -6,8 +6,7 @@ export default function OrderDetail(props) {
   }
 
   const plusItem = (id, e) => {
-    console.log(props)
-    props.increment(id, e);
+    
   }
 
   const minusItem = (id, e) => {
@@ -23,17 +22,21 @@ export default function OrderDetail(props) {
             {item.productName}
           </div>
           <div className="priceContainer">
-            <div className="itemPrice" key={ generateKeys(item.price) }>Price: {item.price}<b> /- </b></div>
-            <div className="itemQuantity" key={ generateKeys(item.quantity) }>Quantity: {item.quantity}</div>
+            <div className="itemPrice" 
+            key={ generateKeys(item.price) }>Price: {item.price}<b> /- </b></div>
+            <div className="itemQuantity" 
+            key={ generateKeys(item.quantity) }>Quantity: {item.quantity}</div>
           </div>
         </div>
         <div className="buttonsContainer">
           <button type="button" 
           className="plusButton" 
-          key={ generateKeys(index + 1000) } onClick = { (e) => plusItem(item.id, e)}>+</button>
+          key={ generateKeys(index + 1000) } 
+          onClick = { (e) => props.increment(item.id) }>+</button>
           <button type="button" 
           className="minusButton" 
-          key={ generateKeys(index + 100000000) } onClick = {(e) => minusItem(item.id, e)}>–</button>
+          key={ generateKeys(index + 100000000) } 
+          onClick = {(e) => props.decrement(item.id)}>–</button>
         </div>
       </div>
       )

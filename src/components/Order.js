@@ -1,3 +1,5 @@
+/* eslint-disable no-else-return */
+/* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unused-state */
 
@@ -45,34 +47,88 @@ export default class Order extends React.Component {
         },
       ],
     }
-
-// const IncrementQuantityWithPrice = (index) => {
-//   this.setState((prevState) => ({ quantity: (Number(prevState.quantity) + 1) }))
-//   console.log('@')
-// }
-
-  const incrementQuantityWithPrice = (index, e) => {
-    console.log('+', index)
   }
 
-  const DecrementQuantityWithPrice = (index, e) => {
-    console.log("-", index)
-  }
+  incrementQuantityWithPrice = (index) => {
 
-}
+    let totalQuantity = this.state.quantity
+    let totalAmount = this.state.amount
+
+    const newData = this.state.details.map((object) => {if (object.id === index) { 
+      return ( {
+        id: object.id,
+        productName: object.productName, 
+        price: object.price,
+        quantity: object.quantity + 1}) }
+        else { 
+          return ( {
+            id: object.id,
+            productName: object.productName, 
+            price: object.price,
+            quantity: object.quantity})
+          }})
+
+    newData.forEach((element) => {
+            if (element.id === index) {
+              totalQuantity += 1
+              totalAmount += element.price}
+            })
+
+    this.setState({
+      amount: totalAmount, 
+      quantity: totalQuantity,
+      details: newData })
+  }  
+
+  decrementQuantityWithPrice = (index) => {
+    let totalQuantity = this.state.quantity
+    let totalAmount = this.state.amount
+
+    const newData = this.state.details.map((object) => {if (object.id === index && object.quantity > 0) { 
+      
+      return ( {
+        id: object.id,
+        productName: object.productName, 
+        price: object.price,
+        quantity: object.quantity - 1}) }
+        else { 
+          return ( {
+            id: object.id,
+            productName: object.productName, 
+            price: object.price,
+            quantity: object.quantity})
+          }})
+
+    newData.forEach((element) => {
+      if (element.id === index && totalQuantity > 0 && element.quantity > 0) {
+        totalQuantity -= 1
+        totalAmount -= element.price}
+      })
+    
+    this.setState((prevState) => ({
+      amount: totalAmount, 
+      quantity: totalQuantity,
+      details: newData}))
+
+  }  
 
   render() {
     
     return (
       <div className='cards'>
-        <OrderDetail items = {this.state.details} increment={this.incrementQuantityWithPrice}/>
+        <OrderDetail items = {this.state.details} 
+        increment = {this.incrementQuantityWithPrice} 
+        decrement = {this.decrementQuantityWithPrice}
+        quantity = {this.quantity}
+        amount = {this.amount}
+        />
         <div className="order">
           <div className="clear" />
           <p className="total">
-            Total Quantity : <b> </b>
+            Total Quantity : <b>{this.state.quantity}</b>
           </p>
           <p className="total">
-            Total Price : <b> /- </b>
+            Total Price : <b>{this.state.amount}/- </b>
           </p>
         </div>
       </div>
