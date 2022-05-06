@@ -59,7 +59,7 @@ ReactDOM.render(
 
 Ссылка на репозиторий: [https://github.com/revoidWhale/skyproject.git](https://github.com/revoidWhale/skyproject.git).
 
-### Задание
+#### Задание
 
 1. На примере компонентов урока, сделайте компонент, который:
     - Принимает параметры **min** и **max**.
@@ -94,7 +94,3 @@ ReactDOM.render(
 - Установите ESLint.
 - Разрешите конфликты между линтерами (*при необходимости*).
 - Проверьте зависимости .eslintrc.json, .prettierrc.json, package.json.
-- Запушьте все изменения на GitHub.
-
-Настройте окружение в Visual Code.
-
