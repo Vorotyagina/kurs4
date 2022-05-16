@@ -1,5 +1,9 @@
 import './App.css'
-import ReacTimer from './ReacTimer'
+import Order from './components/Order'
+
+// ДЗ 4
+// import ReacTimer from './ReacTimer'
+
 // ДЗ 3
 // import Book from './book'
 // import Hello from './hello'
@@ -7,16 +11,27 @@ import ReacTimer from './ReacTimer'
 // ДЗ2
 // import MinMaxClass from './minmaxClass'
 
-
 function App() {
   return (
     <div className="App">
-      <ReacTimer />
+      <Order />
     </div>
   );
 }
 
 export default App
+
+// ДЗ4
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <ReacTimer />
+//     </div>
+//   );
+// }
+
+// export default App
 
 // ДЗ 3
 
