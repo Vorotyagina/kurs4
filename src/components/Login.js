@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-unused-vars */
 function Login({ login, password, error, onChange, onBlur }) {
   // валидация инпута
   // function applyCurrent(num) {
@@ -32,7 +34,7 @@ function Login({ login, password, error, onChange, onBlur }) {
       <table>
         <tbody>
           <tr>
-            <td width="10"></td>
+            <td width="10" />
             <td>
               <input
                 type="text"
@@ -54,7 +56,7 @@ function Login({ login, password, error, onChange, onBlur }) {
             </td>
           </tr>
           <tr>
-            <td></td>
+            <td />
             <td>
               <div>{error}</div>
             </td>
