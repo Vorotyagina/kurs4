@@ -1,27 +1,29 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-unused-vars */
+import { Link, useLocation } from 'react-router-dom'
+
 function Login({ login, password, error, onChange, onBlur }) {
+  const location = useLocation()
 
   const isRequied = true
 
   function isValue(e) {
     const value = e.target.value
-    console.log(e.target.id)
+
     onChange(value, isRequied, e.target.id)
   }
 
-  const enter = (e) => {
-    
-  }
+  const enter = (e) => {}
 
   function loginCurrentStr(e) {
+    console.log('login')
     const value = e.target.value
-    onChange(value, 'login')
+    onChange(value, 'login', 0)
   }
 
   function passwordCurrentStr(e) {
     const value = e.target.value
-    onChange(value, 'password')
+    onChange(value, 'password', 0)
   }
 
   return (
@@ -33,7 +35,7 @@ function Login({ login, password, error, onChange, onBlur }) {
             <td>
               <input
                 type="text"
-                id='login'
+                id="login"
                 placeholder="Логин"
                 onBlur={isValue}
                 onChange={loginCurrentStr}
@@ -41,7 +43,7 @@ function Login({ login, password, error, onChange, onBlur }) {
               <input
                 type="password"
                 placeholder="Пароль"
-                id='password'
+                id="password"
                 onBlur={isValue}
                 onChange={passwordCurrentStr}
               />
@@ -58,6 +60,7 @@ function Login({ login, password, error, onChange, onBlur }) {
           </tr>
         </tbody>
       </table>
+      <Link to="/">Home</Link>
     </div>
   )
 }

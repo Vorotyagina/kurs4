@@ -1,10 +1,11 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-param-reassign */
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import MinMax from './MinMax'
-import Total from './Total'
+import GeneralCart from './GeneralCart'
 import DelButton from './DelButton'
-import Login from './Login'
 
 function booksStub() {
   return [
@@ -47,67 +48,87 @@ function booksStub() {
 }
 
 function loginData() {
-  return ([{
-    login: '',
-    password: '',
-  }, 
-  {
-    error: '',
-    }])
+  return [
+    {
+      login: '',
+      password: '',
+    },
+    {
+      error: '',
+    },
+  ]
 }
 
 export default function BookCart() {
   const [books, setBooks] = useState(booksStub())
   const [logData, setLogData] = useState(loginData())
 
+// меняем количество книг
   const setQuantity = (id, quantity) => {
     setBooks(
       books.map((book) => (book.id !== id ? book : { ...book, quantity }))
     )
- }
+ 
+  }
 
-function setDeleteItem(id) {
-      setBooks(books.filter((book) => book.id !== id))
-      return books
-    }
-
-const setLogin = (value, isRequired, what) => {
-  if (isRequired) {
-    console.log(logData[1].error)
-    if (value === '') {
-      setLogData([{
-        login: value,
-        password: logData[0].password,
-      },{
-        error: "Введите логин или пароль"
-      }])
-    } else {
-      setLogData([{
-        login: logData[0].login,
-        password: logData[0].password,
-      },{
-        error: ''
-      }])
-      if (what === "login") {
-        setLogData([{
-          login: value,
-          password: logData[0].password,
-        },{
-          error: logData[1].error
-        }])
-      } 
-      if (what === "password") {
-      setLogData([{
-        login: logData[0].login,
-        password: value,
-      },{
-        error: logData[1].error
-      }])
-  } 
-}
-}
- }
+  // удаляем книгу из списка
+  function setDeleteItem(id) {
+    setBooks(books.filter((book) => book.id !== id))
     
+    return books
+  }
+
+
+  // поля для ввода логина и пароля
+  const setLogin = (value, isRequired, what) => {
+    if (isRequired) {
+      console.log(logData[1].error)
+      if (value === '') {
+        setLogData([
+          {
+            login: value,
+            password: logData[0].password,
+          },
+          {
+            error: 'Введите логин или пароль',
+          },
+        ])
+      } else {
+        setLogData([
+          {
+            login: logData[0].login,
+            password: logData[0].password,
+          },
+          {
+            error: '',
+          },
+        ])
+        if (what === 'login') {
+          setLogData([
+            {
+              login: value,
+              password: logData[0].password,
+            },
+            {
+              error: logData[1].error,
+            },
+          ])
+        }
+        if (what === 'password') {
+          setLogData([
+            {
+              login: logData[0].login,
+              password: value,
+            },
+            {
+              error: logData[1].error,
+            },
+          ])
+        }
+      }
+    }
+  }
+
   return (
     <div className="some">
       <h1>books list</h1>
@@ -132,36 +153,47 @@ const setLogin = (value, isRequired, what) => {
                   current={book.quantity}
                   onChange={(quantity) => {
                     setQuantity(book.id, quantity)
-                    }}
+                  }}
                 />
               </td>
               <td>{book.price * book.quantity}</td>
               <td>
-                <DelButton 
+                <DelButton
                   item={book.id}
-                  onClick={() => {setDeleteItem(book.id)
+                  onClick={() => {
+                    setDeleteItem(book.id)
                   }}
                 />
               </td>
             </tr>
-         
           ))}
-             <tr>
-               <td />
-               <td>
-              <Total booksCart={books.reduce((result, item) => 
-                result += Number(item.price) * Number(item.quantity)
-              , 0)
-              }/>
-              </td>
-            </tr>
+          <tr>
+            <td />
+            <td>
+              <GeneralCart
+                data={books}
+              />
+            </td>
+          </tr>
         </tbody>
       </table>
-      <Login login={logData[0].login} password={logData[0].password} 
-      error={logData[1].error}
-      onBlur={(value, isRequied, what) => setLogin(value, isRequied, what)} 
-      onChange={(value, isRequired, what) => setLogin(value, isRequired, what)}
-      />
+      <Link to="/about">About Shop</Link>&nbsp;&nbsp;
+      <Link
+        to={{
+          pathname: '/login',
+          state: {
+            login: logData[0].login,
+            password: logData[0].password,
+            error: logData[1].error,
+          },
+          onChange: (value, isRequired, what) =>
+           { setLogin(value, isRequired, what) },
+          onBlur: (value, isRequied, what) => {
+            setLogin(value, isRequied, what)},
+        }}
+      >
+        Вход
+      </Link>
     </div>
   )
 }
