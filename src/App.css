@@ -160,3 +160,9 @@ h4 {
   flex-direction: column;
   margin-top: 20px;
 }
+
+.divCitaty {
+
+  width: 400px;
+  padding-left: 15px
+}

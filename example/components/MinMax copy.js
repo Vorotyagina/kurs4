@@ -5,12 +5,12 @@ function MinMax({ min = 0, max, current, onChange }) {
     onChange(validNum)
   }
 
-function parseCurrentStr(e) {
+  function parseCurrentStr(e) {
     // Прочти про parseInt ;) https://webformyself.com/chisla-v-javascript-funkciya-parseint/
     const num = parseInt(e.target.value, 10)
     applyCurrent(Number.isNaN(num) ? min : num)
   }
-  
+
   const inc = () => applyCurrent(current + 1)
   const dec = () => applyCurrent(current - 1)
 
