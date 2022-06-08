@@ -164,5 +164,11 @@ h4 {
 .divCitaty {
 
   width: 400px;
-  padding-left: 15px
+  padding-left: 15px;
+}
+
+.textFromBook {
+  margin-top: 15px;
+  border: 1px solid grey;
+  padding: 5px;
 }
