@@ -18,7 +18,6 @@ function SelectBook(books) {
     ]
     const [book, setBook] = useState("")
     
-    
     const handlerChange = (e) => {
         setBook(e.target.value)
         if (e.target.value) {

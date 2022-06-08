@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import MinMax from "./MinMax";
+import MinMaxLazy from "./MinMaxLazy";
 import GeneralCart from "./GeneralCart";
 import DelButton from "./DelButton";
 import SelectBook from "./SelectBook";
@@ -147,7 +148,7 @@ export default function BookCart() {
               <td>{book.title}</td>
               <td>{book.price}</td>
               <td>
-                <MinMax
+                <MinMaxLazy
                   max={book.rest}
                   current={book.quantity}
                   onChange={(quantity) => {
