@@ -3,7 +3,7 @@
 /* eslint-disable no-param-reassign */
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import MinMax from "./MinMax";
+// import MinMax from "./MinMax";
 import MinMaxLazy from "./MinMaxLazy";
 import GeneralCart from "./GeneralCart";
 import DelButton from "./DelButton";
@@ -153,7 +153,7 @@ export default function BookCart() {
                   current={book.quantity}
                   onChange={(quantity) => {
                     setQuantity(book.id, quantity);
-                  }}
+                  }} onBlur={(e)=> {console.log(e)}} onKeyPress={(e)=> {console.log(e)}}
                 />
               </td>
               <td>{book.price * book.quantity}</td>
