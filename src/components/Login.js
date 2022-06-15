@@ -1,9 +1,24 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-unused-vars */
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
+function loginData() {
+  return [
+    {
+      login: "",
+      password: "",
+    },
+    {
+      error: "",
+    },
+  ];
+}
+  
 
 function Login({ login, password, error, onChange, onBlur }) {
-  const location = useLocation()
+
+ 
+  console.log("onChange" + " " + onChange)
 
   const isRequied = true
 
@@ -37,6 +52,7 @@ function Login({ login, password, error, onChange, onBlur }) {
                 type="text"
                 id="login"
                 placeholder="Логин"
+                value={login}
                 onBlur={isValue}
                 onChange={loginCurrentStr}
               />
@@ -44,6 +60,7 @@ function Login({ login, password, error, onChange, onBlur }) {
                 type="password"
                 placeholder="Пароль"
                 id="password"
+                value={password}
                 onBlur={isValue}
                 onChange={passwordCurrentStr}
               />

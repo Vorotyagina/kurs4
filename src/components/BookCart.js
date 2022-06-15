@@ -178,21 +178,7 @@ export default function BookCart() {
             <td>
               <Link to="/about">About Shop</Link>&nbsp;&nbsp;
               <Link
-                to={{
-                  pathname: "/login",
-                  state: {
-                    login: logData[0].login,
-                    password: logData[0].password,
-                    error: logData[1].error,
-                  },
-                  onChange: (value, isRequired, what) => {
-                    setLogin(value, isRequired, what);
-                  },
-                  onBlur: (value, isRequied, what) => {
-                    setLogin(value, isRequied, what);
-                  },
-                }}
-              >
+                to="/login">            
                 Вход
               </Link>
             </td>
@@ -216,3 +202,33 @@ const setquantity = (id, quantity) => {
 	newbooks[productInd] = newProduct;
 	setbooks(newbooks);
 } */
+
+
+/* <Link
+                to={{
+                  pathname: "/login",
+                  state: {
+                    login: logData[0].login,
+                    password: logData[0].password,
+                    error: logData[1].error,
+                  },
+                  onChange: (value, isRequired, what) => {
+                    setLogin(value, isRequired, what);
+                  },
+                  onBlur: (value, isRequied, what) => {
+                    setLogin(value, isRequied, what);
+                  },
+                }} */
+//               ></Link>
+
+
+// <Link to="/login" 
+//                 login={logData[0].login} 
+//                 password={logData[0].password}
+//                 error={logData[1].error}
+//                 onChange={(value, isRequired, what) => {
+//                   setLogin(value, isRequired, what);
+//                 }}
+//                 onBlur={(value, isRequied, what) => {
+//                   setLogin(value, isRequied, what);
+//                 }}></Link>
