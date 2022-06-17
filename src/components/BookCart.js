@@ -49,21 +49,11 @@ function booksStub() {
   ];
 }
 
-function loginData() {
-  return [
-    {
-      login: "",
-      password: "",
-    },
-    {
-      error: "",
-    },
-  ];
-}
+
 
 export default function BookCart() {
   const [books, setBooks] = useState(booksStub());
-  const [logData, setLogData] = useState(loginData());
+  
 
   // меняем количество книг
   const setQuantity = (id, quantity) => {
@@ -80,55 +70,7 @@ export default function BookCart() {
   }
 
   // поля для ввода логина и пароля
-  const setLogin = (value, isRequired, what) => {
-    if (isRequired) {
-      console.log(logData[1].error);
-      if (value === "") {
-        setLogData([
-          {
-            login: value,
-            password: logData[0].password,
-          },
-          {
-            error: "Введите логин или пароль",
-          },
-        ]);
-      } else {
-        setLogData([
-          {
-            login: logData[0].login,
-            password: logData[0].password,
-          },
-          {
-            error: "",
-          },
-        ]);
-        if (what === "login") {
-          setLogData([
-            {
-              login: value,
-              password: logData[0].password,
-            },
-            {
-              error: logData[1].error,
-            },
-          ]);
-        }
-        if (what === "password") {
-          setLogData([
-            {
-              login: logData[0].login,
-              password: value,
-            },
-            {
-              error: logData[1].error,
-            },
-          ]);
-        }
-      }
-    }
-  };
-
+  
   return (
     <div className="some">
       <h1>books list</h1>
