@@ -122,7 +122,8 @@ export default function BookCart() {
               <Link
                 to="/login">            
                 Вход
-              </Link>
+              </Link>&nbsp;&nbsp;
+              <Link to="/colored__numbers">Таблица с числами (ДЗ №9)</Link>
             </td>
           </tr>
         </tbody>
