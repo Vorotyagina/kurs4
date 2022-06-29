@@ -1,4 +1,7 @@
+/* eslint-disable react/no-typos */
  import { useState } from 'react';
+ import { PropTypes} from 'prop-types'
+import minmaxClass from '../minmaxClass';
 
 function MinMaxLazy({ min = 0, max, current, onChange}) {
 
@@ -54,6 +57,13 @@ function MinMaxLazy({ min = 0, max, current, onChange}) {
       </button>
     </div>
   )
+}
+
+MinMaxLazy.PropTypes = {
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  current: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 export default MinMaxLazy

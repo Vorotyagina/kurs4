@@ -1,10 +1,11 @@
+/* eslint-disable react/no-typos */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-param-reassign */
 
 import { Link } from 'react-router-dom'
-
+import { PropTypes } from 'prop-types'
 
 
 function GeneralCart({data}) {
@@ -25,4 +26,9 @@ function GeneralCart({data}) {
     )
   }
   
-  export default GeneralCart
+  
+GeneralCart.PropTypes = {
+  data: PropTypes.array.isRequired,
+}
+  
+export default GeneralCart

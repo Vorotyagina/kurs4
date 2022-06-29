@@ -1,4 +1,6 @@
+/* eslint-disable react/no-typos */
 import { useState } from "react";
+import { PropTypes } from 'prop-types'
 
 function SelectBook(books) {
 
@@ -44,5 +46,9 @@ function SelectBook(books) {
     </div>
     )
 }
+
+SelectBook.PropTypes = {
+    books: PropTypes.array.isRequired,
+  }
 
 export default SelectBook

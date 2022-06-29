@@ -1,3 +1,6 @@
+/* eslint-disable react/no-typos */
+import {PropTypes} from 'prop-types'
+
 function DelButton({ item, onClick }) {
   
 
@@ -15,6 +18,12 @@ function DelButton({ item, onClick }) {
       </div>
     )
   }
+
+  
+DelButton.PropTypes = {
+  item: PropTypes.any.isRequired,
+  onClick: PropTypes.func.isRequired,
+}
   
   export default DelButton
   

@@ -1,3 +1,6 @@
+/* eslint-disable react/no-typos */
+import { PropTypes } from 'prop-types'
+
 /* eslint-disable no-unused-vars */
 export default function OrderDetail(props) {
   // const {name} = props.name
@@ -51,4 +54,8 @@ export default function OrderDetail(props) {
   )
 }
 
+
+OrderDetail.PropTypes = {
+  props: PropTypes.any.isRequired,
+}
   
